@@ -161,12 +161,14 @@ footer .logo-text{ color: var(--cream); }
   transition: opacity .18s ease, transform .18s ease, visibility .18s;
   z-index: 80;
 }
-.has-mega:hover .mega-panel,
-.has-mega:focus-within .mega-panel{
-  opacity: 1; visibility: visible;
-  transform: translateX(-50%) translateY(0);
+@media (min-width: 721px){
+  .has-mega:hover .mega-panel,
+  .has-mega:focus-within .mega-panel{
+    opacity: 1; visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
+  .has-mega:hover > a .caret{ transform: rotate(180deg); }
 }
-.has-mega:hover > a .caret{ transform: rotate(180deg); }
 .mega-col h4{
   margin: 0 0 10px;
   font-family: var(--font-mono);
@@ -216,12 +218,29 @@ footer .logo-text{ color: var(--cream); }
    HERO
 ========================================================= */
 .hero{
+  position: relative;
   background: var(--ink);
   color: var(--cream);
   padding: 64px 0 0;
   overflow: hidden;
 }
+.hero-bg{
+  position: absolute; inset: 0;
+  z-index: 0;
+}
+.hero-bg img{
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 55%;
+}
+.hero-overlay{
+  position: absolute; inset: 0;
+  z-index: 1;
+  background: linear-gradient(100deg, rgba(22,26,31,.94) 0%, rgba(22,26,31,.85) 32%, rgba(22,26,31,.6) 58%, rgba(22,26,31,.4) 100%);
+}
 .hero-grid{
+  position: relative;
+  z-index: 2;
   display:grid;
   grid-template-columns: 1.05fr .95fr;
   gap: 48px;
@@ -515,6 +534,9 @@ footer{ background: var(--ink); color: var(--cream-dim); padding: 48px 0 24px; }
 ========================================================= */
 @media (max-width: 980px){
   .hero-grid{ grid-template-columns: 1fr; }
+  .hero-overlay{
+    background: linear-gradient(180deg, rgba(22,26,31,.55) 0%, rgba(22,26,31,.92) 55%, rgba(22,26,31,.97) 100%);
+  }
   .cat-grid{ grid-template-columns: repeat(2,1fr); }
   .product-grid{ grid-template-columns: repeat(2,1fr); }
   .spec-grid{ grid-template-columns: repeat(2,1fr); }
@@ -528,6 +550,10 @@ footer{ background: var(--ink); color: var(--cream-dim); padding: 48px 0 24px; }
     background: var(--brand-red);
     border-bottom: 1px solid var(--brand-red-dark);
     display:none;
+    max-height: calc(100vh - 72px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
   }
   .main-nav.open{ display:block; }
   .main-nav ul{ flex-direction:column; gap:0; padding: 8px 24px 18px; }
