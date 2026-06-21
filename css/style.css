@@ -75,6 +75,8 @@ h1,h2,h3,h4{
 .btn:hover{ transform: translateY(-2px); }
 .btn:focus-visible{ outline: 2px solid var(--clay); outline-offset: 3px; }
 .btn-primary{ background: var(--clay); color: var(--cream); }
+.btn-whatsapp{ background: #2EAD58; color: #fff; }
+.btn-whatsapp:hover{ background: #25933F; }
 .btn-primary:hover{ background: var(--clay-dark); }
 .btn-ghost{ background: transparent; border-color: var(--line-dark); color: var(--ink); }
 .btn-ghost:hover{ border-color: var(--ink); }
