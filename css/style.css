@@ -536,8 +536,124 @@ footer{ background: var(--ink); color: var(--cream-dim); padding: 48px 0 24px; }
 .wa-float:hover{ transform: scale(1.07); }
 
 /* =========================================================
-   RESPONSIVO
+   COPA DO MUNDO 2026 — HERO PROMO
 ========================================================= */
+:root{
+  --copa-gold:  #FFD700;
+  --copa-green: #009C3B;
+  --copa-blue:  #002776;
+}
+
+/* Faixa animada no topo do hero */
+.copa-ribbon{
+  position: relative;
+  z-index: 3;
+  background: linear-gradient(90deg, var(--copa-blue) 0%, var(--copa-green) 50%, var(--copa-blue) 100%);
+  background-size: 200% 100%;
+  animation: ribbonSlide 4s linear infinite;
+  color: #fff;
+  font-size: .83rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 9px 16px;
+  letter-spacing: .04em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.copa-ribbon strong{ color: var(--copa-gold); font-size: 1rem; }
+.copa-flag{ font-size: 1rem; }
+@keyframes ribbonSlide{
+  0%{ background-position: 0% 0%; }
+  100%{ background-position: 200% 0%; }
+}
+
+/* Badge de desconto */
+.hero-discount-badge{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 22px 0 26px;
+  flex-wrap: wrap;
+}
+.badge-inner{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--copa-gold);
+  color: var(--copa-blue);
+  border-radius: 16px;
+  padding: 12px 22px;
+  box-shadow: 0 8px 24px -6px rgba(255,215,0,.5);
+}
+.badge-pct{
+  font-family: var(--font-display);
+  font-size: 3.2rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--copa-blue);
+}
+.badge-pct small{ font-size: 1.6rem; }
+.badge-label{
+  font-weight: 700;
+  font-size: .95rem;
+  line-height: 1.3;
+  color: var(--copa-blue);
+}
+.badge-label em{ font-style: normal; font-weight: 400; font-size: .8rem; }
+.badge-timer{
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.timer-label{ font-size: .7rem; color: rgba(246,242,234,.7); font-family: var(--font-mono); letter-spacing: .06em; text-transform: uppercase; }
+.timer-clock{
+  font-family: var(--font-mono);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--copa-gold);
+  letter-spacing: .04em;
+}
+
+/* Botão Copa */
+.btn-copa{
+  background: linear-gradient(135deg, var(--copa-green), #007a2e);
+  color: #fff;
+  font-weight: 700;
+  border: none;
+  box-shadow: 0 6px 18px -4px rgba(0,156,59,.5);
+}
+.btn-copa:hover{ background: linear-gradient(135deg, #007a2e, #005c22); }
+
+/* =========================================================
+   ASSINATURA ONDA TECH
+========================================================= */
+.footer-signature{
+  background: var(--ink);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  color: rgba(246,242,234,.4);
+  text-align: center;
+}
+.footer-signature a{
+  color: #E21C21;
+  font-weight: 600;
+  transition: color .2s ease;
+}
+.footer-signature a:hover{ color: #ff4444; }
+.sig-tagline{
+  color: rgba(246,242,234,.3);
+  font-size: .68rem;
+}
+.sig-tagline svg{ color: #E21C21; }
 @media (max-width: 980px){
   .hero-grid{ grid-template-columns: 1fr; }
   .hero-overlay{

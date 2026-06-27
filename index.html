@@ -146,19 +146,38 @@
     <img src="img/quarto-cama.jpeg" alt="">
   </div>
   <div class="hero-overlay"></div>
+
+  <!-- FAIXA COPA -->
+  <div class="copa-ribbon">
+    <span class="copa-flag">🏆</span>
+    <span>Promoção Copa do Mundo 2026 — <strong>30% OFF</strong> em toda a loja!</span>
+    <span class="copa-flag">⚽</span>
+  </div>
+
   <div class="container hero-grid">
     <div class="hero-copy">
-      <span class="eyebrow">Base Box · Colchões · Conjuntos</span>
-      <h1>O sono começa <em>na base</em>, não só no colchão.</h1>
-      <p>Conjuntos prontos, colchões avulsos e bases sob medida — selecionados pela durabilidade, pelo conforto da primeira noite e pelo preço justo.</p>
+      <span class="eyebrow">🏆 Oferta Copa do Mundo · Tempo Limitado</span>
+      <h1>Durma como <em>campeão</em> — 30% OFF em tudo.</h1>
+      <p>A Copa chegou e a Pontalle entrou em campo! Colchões, base box e conjuntos com <strong style="color:var(--copa-gold)">30% de desconto</strong> enquanto durar o estoque. Aproveite antes do apito final.</p>
+
+      <div class="hero-discount-badge">
+        <div class="badge-inner">
+          <span class="badge-pct">30<small>%</small></span>
+          <span class="badge-label">OFF<br><em>em toda a loja</em></span>
+        </div>
+        <div class="badge-timer" id="heroTimer">
+          <span class="timer-label">⏱ Oferta encerra em</span>
+          <span class="timer-clock" id="timerClock">--:--:--</span>
+        </div>
+      </div>
 
       <div class="hero-actions">
-        <a href="#conjuntos" class="btn btn-primary">Ver conjuntos prontos</a>
-        <a href="#" class="btn btn-ghost-light" data-wa="554132901020">Falar com um vendedor</a>
+        <a href="#conjuntos" class="btn btn-copa">⚽ Ver ofertas da Copa</a>
+        <a href="#" class="btn btn-ghost-light" data-wa="554132901020" data-wa-msg="Olá! Vi a promoção da Copa com 30% OFF e quero aproveitar!">Falar com vendedor</a>
       </div>
 
       <div class="hero-specs">
-        <div><strong>+15</strong><span>Anos de garantia</span></div>
+        <div><strong>30%</strong><span>de desconto</span></div>
         <div><strong>4</strong><span>Lojas na região</span></div>
         <div><strong>24h</strong><span>Resposta no WhatsApp</span></div>
       </div>
@@ -574,6 +593,13 @@
     <span>Móveis Pontalle LTDA · CNPJ 05.874.301/0001-68</span>
     <span>© 2026 — Todos os direitos reservados</span>
   </div>
+  <div class="footer-signature">
+    <span>Site desenvolvido por <a href="https://ondatech.vercel.app/" target="_blank" rel="noopener">Salvador Galdino</a> · <a href="https://ondatech.vercel.app/" target="_blank" rel="noopener">Onda Tech</a></span>
+    <span class="sig-tagline">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:4px"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      Tecnologia que flui
+    </span>
+  </div>
 </footer>
 
 <!-- botão flutuante -->
@@ -582,5 +608,28 @@
 </a>
 
 <script src="js/script.js"></script>
+<script>
+// Timer Copa do Mundo — encerra em 3 dias a partir do primeiro acesso
+(function(){
+  const KEY = "copa_promo_end";
+  let end = localStorage.getItem(KEY);
+  if(!end){
+    end = Date.now() + 3 * 24 * 60 * 60 * 1000; // 3 dias
+    localStorage.setItem(KEY, end);
+  }
+  const clock = document.getElementById("timerClock");
+  if(!clock) return;
+  function tick(){
+    const diff = end - Date.now();
+    if(diff <= 0){ clock.textContent = "ENCERRADA"; return; }
+    const h = String(Math.floor(diff/3600000)).padStart(2,"0");
+    const m = String(Math.floor((diff%3600000)/60000)).padStart(2,"0");
+    const s = String(Math.floor((diff%60000)/1000)).padStart(2,"0");
+    clock.textContent = `${h}:${m}:${s}`;
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
+</script>
 </body>
 </html>
